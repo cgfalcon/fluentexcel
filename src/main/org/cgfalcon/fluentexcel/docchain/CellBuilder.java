@@ -10,11 +10,8 @@ import org.apache.poi.ss.usermodel.CellStyle;
 public interface CellBuilder {
 
     CellBuilder type(int cellType);
-
     CellBuilder withStyle(CellStyle cellStyle);
-
     CellBuilder withStyle(String styleJson);
-
     CellBuilder content(String content);
 
     RowBuilder cellOver();

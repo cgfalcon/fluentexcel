@@ -13,9 +13,10 @@ import java.util.Map;
 public class DataSheet {
 
     private String sheetName = "Sheet1";
-    public List<DataBlock> blocks;
     private Map<Integer, Integer> colWidth = new HashMap<Integer, Integer>();
     private List<MergerRegion> mergerRegions = new ArrayList<MergerRegion>();
+
+    public List<DataBlock> blocks;
 
     public List<MergerRegion> getMergerRegions() {
         return mergerRegions;

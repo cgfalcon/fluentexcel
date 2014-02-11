@@ -3,7 +3,9 @@ package org.cgfalcon.fluentexcel.docchain.impl;
 import org.cgfalcon.fluentexcel.docchain.BlockBuilder;
 import org.cgfalcon.fluentexcel.docchain.DocBuilder;
 import org.cgfalcon.fluentexcel.docchain.SheetBuilder;
-import org.cgfalcon.fluentexcel.entity.*;
+import org.cgfalcon.fluentexcel.entity.DataBlock;
+import org.cgfalcon.fluentexcel.entity.DataSheet;
+import org.cgfalcon.fluentexcel.entity.MergerRegion;
 
 import java.util.Map;
 
@@ -39,7 +41,6 @@ public class BaseSheetBuilder implements SheetBuilder {
         return this;
     }
 
-
     @Override
     public SheetBuilder addBlock(DataBlock block) {
         dataSheet.addBlock(block);
@@ -54,7 +55,7 @@ public class BaseSheetBuilder implements SheetBuilder {
     @Override
     public DocBuilder sheetOver() {
         docBuilder.addSheet(dataSheet);
-        return docBuilder;  //To change body of implemented methods use File | Settings | File Templates.
+        return docBuilder;
     }
 
     @Override

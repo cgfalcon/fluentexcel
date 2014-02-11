@@ -10,8 +10,8 @@ import java.util.List;
  */
 public class DataBlock {
 
-    private List<DataRow>  rows;
-    private int                 startRow = 1;
+    private List<DataRow> rows;
+    private int startRow = 1;
 
     public int getStartRow() {
         return startRow;

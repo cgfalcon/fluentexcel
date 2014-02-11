@@ -11,7 +11,6 @@ import org.cgfalcon.fluentexcel.render.Render;
  * Time: 下午5:15
  */
 public interface CellStyleBuilder {
-
     CellStyleBuilder withRender(Render render);
     CellStyleBuilder verticalAlign(Short verticalAlign);
     CellStyleBuilder align(Short alignType);
@@ -23,8 +22,6 @@ public interface CellStyleBuilder {
 
     FontBuilder createFont();
 
-
     CellStyle parse(String jsonStyle);
-
     CellStyle cellStyleOver();
 }

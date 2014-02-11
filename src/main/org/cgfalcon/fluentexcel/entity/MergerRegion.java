@@ -7,8 +7,6 @@ package org.cgfalcon.fluentexcel.entity;
  */
 public class MergerRegion {
 
-
-
     /**
      *
      * 合并区起始行

@@ -10,7 +10,6 @@ import org.apache.poi.util.IOUtils;
 import org.apache.poi.xssf.usermodel.*;
 import org.cgfalcon.fluentexcel.entity.Image;
 
-
 import java.awt.Color;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -30,8 +29,7 @@ import java.util.Map;
 public class XlsxRender extends Render {
 
     private final Map<String, Font> fontPool = new HashMap<String, Font>();
-    private final Map<String, CellStyle> cellStylePool = new HashMap<String, CellStyle>() ;
-
+    private final Map<String, CellStyle> cellStylePool = new HashMap<String, CellStyle>();
 
     public XlsxRender() {
         this.excelFormat = ExcelFormat.xlsx;
@@ -56,7 +54,7 @@ public class XlsxRender extends Render {
             cloneStyle.cloneStyleFrom(cellStyle);
             return cloneStyle;
         }
-        cellStyle = (XSSFCellStyle)wb.createCellStyle();
+        cellStyle = (XSSFCellStyle) wb.createCellStyle();
         DataFormat dtFormat = wb.createDataFormat();
         initCellStyle(cellStyle, cellStyleBean, dtFormat);
 
@@ -81,6 +79,7 @@ public class XlsxRender extends Render {
 
     /**
      * 初始化字体样式
+     *
      * @param font
      * @param fontBean
      */
@@ -103,13 +102,14 @@ public class XlsxRender extends Render {
         if (fontBean.getColor() != null) {
             ColorBean cbean = fontBean.getColor();
 
-            ((XSSFFont)font).setColor(new XSSFColor(new Color(cbean.getR(), cbean.getG(), cbean.getB())));
+            ((XSSFFont) font).setColor(new XSSFColor(new Color(cbean.getR(), cbean.getG(), cbean.getB())));
         }
 
     }
 
     /**
      * 初始化单元格样式
+     *
      * @param cellStyle
      * @param styleBean
      */
@@ -128,20 +128,19 @@ public class XlsxRender extends Render {
 
         if (styleBean.getFgColor() != null) {
             ColorBean cbean = styleBean.getFgColor();
-            ((XSSFCellStyle)cellStyle).setFillForegroundColor(new XSSFColor(new Color(cbean.getR(), cbean.getG(), cbean.getB())));
+            ((XSSFCellStyle) cellStyle).setFillForegroundColor(new XSSFColor(new Color(cbean.getR(), cbean.getG(), cbean.getB())));
             cellStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
         }
 
         if (styleBean.getBgColor() != null) {
             ColorBean cbean = styleBean.getBgColor();
-            ((XSSFCellStyle)cellStyle).setFillBackgroundColor(new XSSFColor(new Color(cbean.getR(), cbean.getG(), cbean.getB())));
+            ((XSSFCellStyle) cellStyle).setFillBackgroundColor(new XSSFColor(new Color(cbean.getR(), cbean.getG(), cbean.getB())));
             cellStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
         }
 
         if (styleBean.getWrapText() != null) {
             cellStyle.setWrapText(styleBean.getWrapText());
         }
-
 
 
     }
@@ -170,7 +169,6 @@ public class XlsxRender extends Render {
             e.printStackTrace();
         }
     }
-
 
 
     @Override

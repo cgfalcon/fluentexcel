@@ -14,7 +14,6 @@ import java.util.List;
  */
 public class DataDoc {
 
-
     private String docName = "Unknow";
     private String docType = "xlsx";
     private List<DataSheet> sheets;

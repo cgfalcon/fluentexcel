@@ -47,8 +47,6 @@ public class DataRow {
 		return row_index;
 	}
 
-
-	
 	public void setRow_index(int row_index) {
 		this.row_index = row_index;
 	}

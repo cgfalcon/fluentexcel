@@ -8,8 +8,6 @@ package org.cgfalcon.fluentexcel.style;
  * Time: 下午5:38
  */
 public interface FontBuilder {
-
-
     FontBuilder size(Short fongSize);
     FontBuilder fontName(String fontName);
     FontBuilder withUnderLine(Byte underLineType);

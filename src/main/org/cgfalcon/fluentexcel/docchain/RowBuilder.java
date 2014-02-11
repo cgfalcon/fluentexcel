@@ -10,9 +10,7 @@ import org.cgfalcon.fluentexcel.entity.DataCell;
 public interface RowBuilder {
 
     RowBuilder fromCol(int col);
-
     RowBuilder addCell(DataCell cell);
-
     RowBuilder height(short height);
 
     CellBuilder createCell();

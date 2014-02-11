@@ -1,12 +1,11 @@
 package org.cgfalcon.fluentexcel.docchain.impl;
 
 import org.apache.log4j.Logger;
-import org.apache.poi.ss.usermodel.Workbook;
 import org.cgfalcon.fluentexcel.docchain.DocBuilder;
 import org.cgfalcon.fluentexcel.docchain.SheetBuilder;
-import org.cgfalcon.fluentexcel.render.Render;
 import org.cgfalcon.fluentexcel.entity.DataDoc;
 import org.cgfalcon.fluentexcel.entity.DataSheet;
+import org.cgfalcon.fluentexcel.render.Render;
 
 /**
  * User: falcon.chu
@@ -19,16 +18,11 @@ public class BaseDocBuilder implements DocBuilder {
 
     private Render render;
     private DataDoc dataDoc = new DataDoc();
-    private String saveDir = "/tmp";
-
-
+    private String  saveDir = "/tmp";
 
     public BaseDocBuilder() {
 
     }
-
-
-
 
     @Override
     public DocBuilder withDocRender(Render render) {
@@ -61,7 +55,7 @@ public class BaseDocBuilder implements DocBuilder {
             logger.info("Hence <saveDir> is null, so excel will be generate to /tmp ");
         }
         dataDoc.setDocDir(saveDir);
-        return this;  //To change body of implemented methods use File | Settings | File Templates.
+        return this;
     }
 
     @Override

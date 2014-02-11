@@ -30,24 +30,23 @@ public abstract class Render {
     protected Gson gson = new Gson();
 
     /**
-     *
      * 单元格样式定义的时候采用JSON的方式定义, 本方法
      * 将定义单元格样式的Json转化为CellStyle， 样式定义
      * {
-     *    'font':{'size': short, 'name': '', 'color': Color, 'underLine': short, 'boldWight': short,
-     *      'italic': boolean, 'dataformat': '' },
-     *    'verticalAlign': short,
-     *    'align': short,
-     *    'fgColor': {'r':short, 'g':short, 'b':short},
-     *    'bgColor': {'r':short, 'g':short, 'b':short}
-     *
-     *
+     * 'font':{'size': short, 'name': '', 'color': Color, 'underLine': short, 'boldWight': short,
+     * 'italic': boolean, 'dataformat': '' },
+     * 'verticalAlign': short,
+     * 'align': short,
+     * 'fgColor': {'r':short, 'g':short, 'b':short},
+     * 'bgColor': {'r':short, 'g':short, 'b':short}
+     * <p/>
+     * <p/>
      * }
+     *
      * @param cellStylePattern
      * @return
      */
     protected abstract CellStyle parse(Workbook wb, String cellStylePattern);
-
 
     protected abstract CellStyle parse(Workbook wb, CellStyleBean cellStyleBean);
 
@@ -62,9 +61,9 @@ public abstract class Render {
      */
     public abstract Workbook getWorkBook();
 
-
     /**
      * Get a Workbook from a Existing Excel File
+     *
      * @param path
      * @return
      * @throws IOException
@@ -111,7 +110,7 @@ public abstract class Render {
      * 根据 小数位 和 小数后缀 获得数字样式
      *
      * @param digit  小数位, 0 ~ 9
-     * @param suffix  小数后缀, "", "%", "x"
+     * @param suffix 小数后缀, "", "%", "x"
      * @return
      */
     public String getDataFormat(String digit, String suffix) {
@@ -120,6 +119,7 @@ public abstract class Render {
 
     /**
      * 将Jsong定义的单元格样式 cellStylePattern 转化为 CellStyle
+     *
      * @param cellStylePattern
      * @return
      */
@@ -132,6 +132,7 @@ public abstract class Render {
 
     /**
      * 将对象化的样式 CellStyleBean 转化为 CellStyle
+     *
      * @param cellStyleBean
      * @return
      */
@@ -153,6 +154,7 @@ public abstract class Render {
 
     /**
      * 将抽象的StyleDataDoc转化为excel
+     *
      * @param wb
      * @param docModel
      */
@@ -161,7 +163,7 @@ public abstract class Render {
         for (int i = 0, size = sheets.size(); i < size; i++) {
             DataSheet sheet = sheets.get(i);
             /* sheet存在则直接返回, 不存在则创建新的sheet */
-            Sheet xlsxSheet = wb.getSheet(sheet.getSheetName()) == null ?  wb.createSheet(sheet.getSheetName()) : wb
+            Sheet xlsxSheet = wb.getSheet(sheet.getSheetName()) == null ? wb.createSheet(sheet.getSheetName()) : wb
                     .getSheet(sheet.getSheetName());
 
 
@@ -225,15 +227,14 @@ public abstract class Render {
                         /* 设置单元格内容类型 */
                         if (cell.getType() != null) {
                             xlsxCell.setCellType(cell.getType());
-                            if(cell.getType() == Cell.CELL_TYPE_NUMERIC) {
+                            if (cell.getType() == Cell.CELL_TYPE_NUMERIC) {
                                 try {
                                     xlsxCell.setCellValue(Double.valueOf(cell.getContent()));
                                 } catch (NumberFormatException e) {
                                     xlsxCell.setCellValue(cell.getContent());
                                 }
 
-                            }
-                            else {
+                            } else {
                                 xlsxCell.setCellValue(cell.getContent());
                             }
 
@@ -276,13 +277,13 @@ public abstract class Render {
 
     /**
      * Generate A excel file with giving workbook and DataDoc
+     *
      * @param wb
      * @param docModel
      * @return
      */
     public static String produceExcel(Workbook wb, DataDoc docModel) {
         String root = docModel.getDocDir();
-
         File dirFile = new File(root);
 
         if (!dirFile.isDirectory()) {
@@ -319,6 +320,7 @@ public abstract class Render {
     /**
      * Generate A excel file with giving DataDoc, and use workbook field in this Object Instance as another parameter.
      * if workbook is null, will create a new one;
+     *
      * @param docModel
      * @return
      */
@@ -328,8 +330,6 @@ public abstract class Render {
         }
         return produceExcel(this.workbook, docModel);
     }
-
-
 
     /**
      * 按照千分位分割数字

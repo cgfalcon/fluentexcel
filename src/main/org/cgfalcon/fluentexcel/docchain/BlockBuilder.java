@@ -10,7 +10,6 @@ import org.cgfalcon.fluentexcel.entity.DataRow;
 public interface BlockBuilder {
 
     BlockBuilder fromRow(int row);
-
     BlockBuilder addRow(DataRow row);
 
     RowBuilder createRow();
